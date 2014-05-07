@@ -34,7 +34,7 @@ class UCB1(ContextualBanditPolicy):
 
         total_counts = sum(pscounts[count] for count in pscounts)
 
-        ucbvalues = [ self.values[a.getID() + math.sqrt((2 * math.log(total_counts)) / float(pscounts[a.getID()]))] for a in possibleActions]
+        ucbvalues = [ self.values[a.getID()] + math.sqrt((2 * math.log(total_counts)) / pscounts[a.getID()]) for a in possibleActions]
 
         action = possibleActions[rargmax(ucbvalues)]
 
